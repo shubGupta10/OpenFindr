@@ -17,30 +17,26 @@ function Footer() {
           </div>
           
           <div className="flex justify-center md:justify-start space-x-6">
-            <a href="https://github.com/opensox" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://github.com/shubGupta10/OpenSox" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <Github className="w-6 h-6" />
               <span className="sr-only">GitHub</span>
             </a>
-            <a href="https://twitter.com/opensox" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://x.com/i_m_shubham45" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <Twitter className="w-6 h-6" />
               <span className="sr-only">Twitter</span>
-            </a>
-            <a href="https://linkedin.com/company/opensox" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <Linkedin className="w-6 h-6" />
-              <span className="sr-only">LinkedIn</span>
             </a>
           </div>
           
           <div className="space-y-4 max-w-xs mx-auto md:mx-0 pb-6 border-b border-[#2a3655]">
             <Button variant="outline" className="w-full justify-center hover:bg-blue-500 hover:text-white transition-colors" asChild>
-              <a href="https://github.com/opensox/opensox" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <a href="https://github.com/shubGupta10/OpenSox" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <Github className="w-5 h-5" />
                 Star on GitHub
                 <ExternalLink className="w-4 h-4 ml-1" />
               </a>
             </Button>
             <Button variant="outline" className="w-full justify-center hover:bg-blue-500 hover:text-white transition-colors" asChild>
-              <Link href="/contact" className="flex items-center gap-2">
+              <Link href="http://shubgupta.vercel.app" className="flex items-center gap-2">
                 <Mail className="w-5 h-5" />
                 Contact Us
               </Link>

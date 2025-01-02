@@ -24,25 +24,25 @@ export function Navbar() {
   }
 
   const NavItems = () => (
-    <>
-      <Link 
-        href="/pages/beginner-repos" 
-        className="flex items-center space-x-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-        onClick={() => setIsOpen(false)}
-      >
-        <BookOpen className="w-4 h-4" />
-        <span>Beginner Repos</span>
-      </Link>
-      
-      <Link 
-        href="/pages/fetch-saved-repos" 
-        className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-        onClick={() => setIsOpen(false)}
-      >
-        Saved Repos
-      </Link>
-      
-      {session && (
+    session ? (
+      <>
+        <Link 
+          href="/pages/beginner-repos" 
+          className="flex items-center space-x-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+          onClick={() => setIsOpen(false)}
+        >
+          <BookOpen className="w-4 h-4" />
+          <span>Beginner Repos</span>
+        </Link>
+        
+        <Link 
+          href="/pages/fetch-saved-repos" 
+          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+          onClick={() => setIsOpen(false)}
+        >
+          Saved Repos
+        </Link>
+        
         <Link 
           href="/pages/repos" 
           className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -50,8 +50,8 @@ export function Navbar() {
         >
           Top Repos
         </Link>
-      )}
-    </>
+      </>
+    ) : null
   )
 
   return (
@@ -66,7 +66,7 @@ export function Navbar() {
           </Link>
           
           <div className="hidden md:flex items-center space-x-6">
-            <NavItems />
+            {session && <NavItems />}
             
             <Button
               variant="outline"
@@ -119,10 +119,10 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
-                  <SheetTitle className='mb-2'></SheetTitle>
+                  <SheetTitle>Navigation</SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col space-y-4">
-                  <NavItems />
+                  {session && <NavItems />}
                   {session ? (
                     <Button 
                       onClick={() => {

@@ -64,20 +64,20 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="space-y-6">
-          <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 sm:p-6 shadow-sm">
-            <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center justify-between sm:space-x-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 shadow-sm">
+            <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
               <div className="space-y-2">
-                <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-black dark:to-white bg-clip-text text-transparent">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-black dark:to-white bg-clip-text text-transparent">
                   Top GitHub Projects
                 </h1>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400">
                   Discover popular open-source projects filtered by your preferences
                 </p>
               </div>
               
-              <div className="relative flex items-center w-full sm:w-auto">
+              <div className="relative flex items-center w-full lg:w-auto">
                 <Search className="absolute left-3 h-4 w-4 text-gray-500 dark:text-gray-400" />
                 <Input
                   type="text"
@@ -89,16 +89,16 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
               <SelectLanguage onChange={handleLanguageChange} />
               <SelectPopularity onChange={handleChangePopularity} />
               <SelectKeywords onChange={handleChangeKeywords} />
             </div>
           </div>
 
-          <div className="grid gap-6">
+          <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {error ? (
-              <Card className="border-red-200 dark:border-red-800">
+              <Card className="col-span-full border-red-200 dark:border-red-800">
                 <CardHeader>
                   <CardTitle className="text-red-600 dark:text-red-400">Error Occurred</CardTitle>
                 </CardHeader>
@@ -118,43 +118,43 @@ export default function Projects() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
-                    <CardHeader>
-                      <CardTitle className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                        <div className="space-y-1">
+                  <Card className="h-full flex flex-col overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
+                    <CardHeader className="flex-grow">
+                      <CardTitle className="flex flex-col gap-2">
+                        <div className="flex items-start justify-between">
                           <a 
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center gap-2 group"
+                            className="text-base sm:text-lg font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center gap-2 group"
                           >
-                            <Book className="w-5 h-5 flex-shrink-0" />
+                            <Book className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                             <span className="break-all">{repo.name}</span>
-                            <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                           </a>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            {repo.description || "No description available."}
-                          </p>
+                          {session && session.user && (
+                            <SavedRepositories repo={repo} userEmail={session.user.email || ''} />
+                          )}
                         </div>
-                        {session && session.user && (
-                          <SavedRepositories repo={repo} userEmail={session.user.email || ''} />
-                        )}
+                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                          {repo.description || "No description available."}
+                        </p>
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div className="flex items-center gap-4 text-sm">
+                      <div className="flex items-center gap-4 text-xs sm:text-sm">
                         <div className="flex items-center gap-1 text-yellow-500 dark:text-yellow-400">
-                          <Star className="w-4 h-4" />
+                          <Star className="w-3 h-3 sm:w-4 sm:h-4" />
                           <span>{repo.stargazers_count.toLocaleString()}</span>
                         </div>
                         <div className="flex items-center gap-1 text-blue-500 dark:text-blue-400">
-                          <GitForkIcon className="w-4 h-4" />
+                          <GitForkIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                           <span>{repo.forks_count.toLocaleString()}</span>
                         </div>
                       </div>
                       <Button 
                         asChild 
-                        className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white text-xs sm:text-sm"
                       >
                         <a
                           href={repo.html_url}
@@ -162,7 +162,7 @@ export default function Projects() {
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 justify-center"
                         >
-                          <GithubIcon className="w-4 h-4" />
+                          <GithubIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                           View Repository
                         </a>
                       </Button>
@@ -171,9 +171,9 @@ export default function Projects() {
                 </motion.div>
               ))
             ) : (
-              <Card className="text-center py-12 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
+              <Card className="col-span-full text-center py-8 sm:py-12 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                     No repositories found. Try adjusting your filters or search query.
                   </p>
                 </CardContent>
