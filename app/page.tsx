@@ -1,5 +1,6 @@
 'use client'
 
+import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Search, Star, Tag, HelpCircle, SaveAllIcon, MoonIcon, ArrowRight, Github, Code2 } from 'lucide-react'
@@ -8,6 +9,7 @@ import { motion } from "framer-motion"
 
 export default function Home() {
   const router = useRouter()
+  const { theme } = useTheme()
   
   const handleGetStarted = () => {
     router.push('/pages/repos')
@@ -29,7 +31,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#101521] text-white">
+    <div className="min-h-screen bg-gray-100 dark:bg-[#101521] text-gray-900 dark:text-white transition-colors duration-300">
       <main className="relative">
         {/* Hero Section */}
         <section className="relative py-20 px-4 sm:px-6 lg:px-8">
@@ -41,13 +43,13 @@ export default function Home() {
               className="space-y-4"
             >
               <div className="flex items-center justify-center gap-2 mb-6">
-                <Code2 className="w-12 h-12 text-blue-400" />
+                <Code2 className="w-12 h-12 text-blue-600 dark:text-blue-400" />
                 <h1 className="text-5xl md:text-6xl font-bold">OpenSox</h1>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                 Your Gateway to Open Source
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
                 Find the perfect open source projects for beginners and start your contribution journey today
               </p>
             </motion.div>
@@ -60,7 +62,7 @@ export default function Home() {
               <Button 
                 onClick={handleGetStarted} 
                 size="lg" 
-                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-lg rounded-full"
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-6 text-lg rounded-full"
               >
                 Get Started
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -70,7 +72,7 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1c2438]">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#1c2438] transition-colors duration-300">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -79,10 +81,10 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                 Everything You Need
               </h2>
-              <p className="mt-4 text-gray-400">
+              <p className="mt-4 text-gray-600 dark:text-gray-400">
                 Powerful features to help you find and contribute to open source projects
               </p>
             </motion.div>
@@ -96,14 +98,14 @@ export default function Home() {
             >
               {features.map((feature) => (
                 <motion.div key={feature.title} variants={item}>
-                  <Card className="bg-[#212b42] border-[#2a3655] hover:border-blue-400/50 transition-all duration-300">
+                  <Card className="bg-gray-50 dark:bg-[#212b42] border-gray-200 dark:border-[#2a3655] hover:border-blue-400/50 transition-all duration-300">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-3 text-xl">
-                        <feature.icon className="w-6 h-6 text-blue-400" />
+                        <feature.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                         {feature.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="text-gray-300">
+                    <CardContent className="text-gray-700 dark:text-gray-300">
                       {feature.description}
                     </CardContent>
                   </Card>
@@ -114,22 +116,22 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#141927]">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-[#141927] transition-colors duration-300">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center space-y-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               Ready to start your open source journey?
             </h2>
-            <p className="text-lg text-blue-100">
+            <p className="text-lg text-gray-700 dark:text-blue-100">
               Join OpenSox today and become part of the open source community!
             </p>
             <Button 
               size="lg" 
-              className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full"
+              className="bg-blue-600 hover:bg-blue-700 dark:bg-white dark:text-blue-600 dark:hover:bg-blue-50 text-white px-8 py-6 text-lg rounded-full"
               onClick={handleGetStarted}
             >
               <Github className="mr-2 h-5 w-5" />
@@ -138,8 +140,6 @@ export default function Home() {
           </motion.div>
         </section>
       </main>
-
-      
     </div>
   )
 }
