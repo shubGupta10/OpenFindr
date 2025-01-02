@@ -6,14 +6,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Search, Star, Tag, HelpCircle, SaveAllIcon, MoonIcon, ArrowRight, Github, Code2 } from 'lucide-react'
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
+import { signIn } from "next-auth/react"
 
 export default function Home() {
   const router = useRouter()
   const { theme } = useTheme()
   
-  const handleGetStarted = () => {
-    router.push('/pages/repos')
-  }
+
+
+   const handleSignIn = async () => {
+      const result = await signIn('github', { redirect: false })
+      if (result?.ok) {
+        router.push('/pages/repos')
+      }
+    }
 
   const container = {
     hidden: { opacity: 0 },
@@ -60,7 +66,7 @@ export default function Home() {
               transition={{ delay: 0.3 }}
             >
               <Button 
-                onClick={handleGetStarted} 
+                onClick={handleSignIn} 
                 size="lg" 
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-6 text-lg rounded-full"
               >
@@ -132,7 +138,7 @@ export default function Home() {
             <Button 
               size="lg" 
               className="bg-blue-600 hover:bg-blue-700 dark:bg-white dark:text-blue-600 dark:hover:bg-blue-50 text-white px-8 py-6 text-lg rounded-full"
-              onClick={handleGetStarted}
+              onClick={handleSignIn}
             >
               <Github className="mr-2 h-5 w-5" />
               Sign Up with GitHub
