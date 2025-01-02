@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OPENSOX: Your Gateway to Open Source 🌐
 
-## Getting Started
 
-First, run the development server:
+**OPENSOX** is an innovative platform designed to connect developers with open source projects that match their skills and interests. Whether you're a beginner looking to make your first contribution or an experienced developer seeking new challenges, OPENSOX provides the tools and resources to help you dive into the world of open source contributions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Search by Programming Languages**: Easily find projects in popular languages like JavaScript, Python, Ruby, TypeScript, Go, and more.
+- **Filter by Popularity**: Discover projects based on their popularity and contribution activity, making it easier to find actively maintained repositories.
+- **Keyword Search**: Use keywords related to your interests or desired skills to find projects that align with your goals.
+- **Beginner-Friendly Issues**: Filter and discover beginner-friendly issues from top open source projects to help you make your first contribution with ease.
+- **Saved Repositories**: Keep track of your favorite repositories, issues, or projects you plan to contribute to by saving them in your profile.
+- **Dark Mode Support**: For late-night coding sessions, switch to dark mode to reduce eye strain and improve your experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+Before you begin, ensure you have the following installed:
 
-To learn more about Next.js, take a look at the following resources:
+- **Node.js** (v14 or later)
+- **npm** or **yarn**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To get started with OPENSOX on your local machine:
 
-## Deploy on Vercel
+1. **Clone the repository**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/your-username/opensox.git
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Navigate into the project directory**:
+
+   ```bash
+   cd opensox
+
+3. **Install the dependencies**:
+
+   ```bash
+   npm install
+
+4. **Start the development server**:
+
+   ```bash
+   npm run dev
