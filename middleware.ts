@@ -29,5 +29,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: [ '/pages/repos'], // Define the routes middleware applies to
+  matcher: [ '/pages/repos', '/pages/beginner-repos', '/pages/fetch-saved-repos'], 
 };
