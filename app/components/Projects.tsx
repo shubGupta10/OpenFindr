@@ -1,6 +1,8 @@
+'use client'
+
 import React, { useEffect, useState } from "react"
 import { SelectLanguage, SelectKeywords, SelectPopularity } from "./SelectComponent"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { GithubIcon, Star, GitForkIcon, Loader2, Search, ExternalLink, Book } from 'lucide-react'
 import { motion } from "framer-motion"
@@ -19,8 +21,6 @@ export default function Projects() {
   const [selectedKeywords, setSelectedKeywords] = useState<string | null>("frontend")
   const [searchQuery, setSearchQuery] = useState<string>("")
   const { data: session } = useSession()
-  console.log(session);
-  
 
   const fetchRepositories = async () => {
     setLoading(true)
@@ -66,18 +66,18 @@ export default function Projects() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-6">
-          <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 shadow-sm">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+          <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 sm:p-6 shadow-sm">
+            <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center justify-between sm:space-x-4">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-black dark:to-white bg-clip-text text-transparent">
+                <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-black dark:to-white bg-clip-text text-transparent">
                   Top GitHub Projects
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                   Discover popular open-source projects filtered by your preferences
                 </p>
               </div>
               
-              <div className="relative flex items-center max-w-md">
+              <div className="relative flex items-center w-full sm:w-auto">
                 <Search className="absolute left-3 h-4 w-4 text-gray-500 dark:text-gray-400" />
                 <Input
                   type="text"
@@ -89,7 +89,7 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
               <SelectLanguage onChange={handleLanguageChange} />
               <SelectPopularity onChange={handleChangePopularity} />
               <SelectKeywords onChange={handleChangeKeywords} />
@@ -120,17 +120,17 @@ export default function Projects() {
                 >
                   <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
                     <CardHeader>
-                      <CardTitle className="flex items-start justify-between gap-4">
+                      <CardTitle className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                         <div className="space-y-1">
                           <a 
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xl font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center gap-2 group"
+                            className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center gap-2 group"
                           >
-                            <Book className="w-5 h-5" />
-                            {repo.name}
-                            <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <Book className="w-5 h-5 flex-shrink-0" />
+                            <span className="break-all">{repo.name}</span>
+                            <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                           </a>
                           <p className="text-sm text-gray-600 dark:text-gray-400">
                             {repo.description || "No description available."}

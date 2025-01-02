@@ -119,7 +119,7 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
-                  <SheetTitle>Navigation</SheetTitle>
+                  <SheetTitle className='mb-2'></SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col space-y-4">
                   <NavItems />
