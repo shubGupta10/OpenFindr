@@ -29,22 +29,10 @@ const handler = NextAuth({
     signOut: '/', 
   },
   callbacks: {
-    async jwt({ token, account, profile }) {
-      if (account && profile) {
-        token.id = account.userId;
-        token.name = profile.name;
-        token.email = profile.email;
-        token.image = profile.image;
-      }
-      return token;
-    },
-    async session({ session, token }): Promise<Session> {
-      if (token && session.user) {
-        session.user.id = token.id as string; 
-        session.user.name = token.name;
-        session.user.email = token.email;
-      }
-      return session;
+    async redirect({ url, baseUrl }) {
+      console.log('NEXTAUTH_URL:', process.env.NEXTAUTH_URL);
+      console.log('Redirecting to:', baseUrl);
+      return baseUrl;
     },
   },
 });
