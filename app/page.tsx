@@ -15,10 +15,7 @@ export default function Home() {
 
 
    const handleSignIn = async () => {
-      const result = await signIn('github', { redirect: false })
-      if (result?.ok) {
         router.push('/pages/repos')
-      }
     }
 
   const container = {
@@ -141,7 +138,7 @@ export default function Home() {
               onClick={handleSignIn}
             >
               <Github className="mr-2 h-5 w-5" />
-              Sign Up with GitHub
+              Click here
             </Button>
           </motion.div>
         </section>
