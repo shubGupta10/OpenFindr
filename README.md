@@ -27,14 +27,14 @@ Before you begin, ensure you have Docker installed on your system. You can downl
    Pull the latest OPENSOX Docker image from Docker Hub:
 
    ```bash
-   docker pull your-username/opensox:latest
+   docker pull shubham76528/opensox:latest
 
 2. **Run the Docker container**:
 
    After pulling the image, run the container with the following command:
 
    ```bash
-   docker run -p 3000:3000 your-username/opensox
+   docker run -p 3000:3000 shubham76528/opensox
 
 3. **Access the app:**
    
@@ -95,6 +95,6 @@ To get started with OPENSOX on your local machine:
 
 **For** *any* `questions` *or* `concerns`, *please* `open` *an* `issue` *or* `contact` *the* `maintainers`:
 
-- **Shubham** - [**@your_twitter**](https://x.com/i_m_shubham45)
+- **Shubham** - [**@twitter**](https://x.com/i_m_shubham45)
 
-**Project** *Link*: [**https://github.com/shubGupta10/OpenSox**](https://github.com/shubGupta10/OpenSox)
+**Project** *Link*: [**https://open-sox.vercel.app**](https://open-sox.vercel.app)
