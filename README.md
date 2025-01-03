@@ -16,6 +16,34 @@
 
 ### Prerequisites
 
+Before you begin, ensure you have Docker installed on your system. You can download Docker from the following link:
+
+- [Download Docker](https://www.docker.com/products/docker-desktop)
+
+### How to Run OPENSOX Using Docker
+
+1. **Pull the Docker image**:
+
+   Pull the latest OPENSOX Docker image from Docker Hub:
+
+   ```bash
+   docker pull your-username/opensox:latest
+
+2. **Run the Docker container**:
+
+   After pulling the image, run the container with the following command:
+
+   ```bash
+   docker run -p 3000:3000 your-username/opensox
+
+3. **Access the app:**
+   
+   Open your browser and navigate to:
+
+   ```bash
+   http://localhost:3000
+
+
 Before you begin, ensure you have the following installed:
 
 - **Node.js** (v14 or later)
@@ -28,7 +56,7 @@ To get started with OPENSOX on your local machine:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/opensox.git
+   git clone https://github.com/shubGupta10/OpenSox
 
 2. **Navigate into the project directory**:
 
@@ -44,3 +72,29 @@ To get started with OPENSOX on your local machine:
 
    ```bash
    npm run dev
+
+## 🤝 **Contributing**
+
+**We** *welcome* `contributions` to **OPENSOX**! *Here's* **how** *you* **can** *help*:
+
+1. **Fork** *the* `repository`
+2. **Create** *your* `feature` **branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit** *your* `changes` (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** *to* *the* `branch` (`git push origin feature/AmazingFeature`)
+5. **Open** *a* `Pull Request`
+
+
+
+## 🙏 **Acknowledgments**
+
+- **Thanks** *to* *all* *the* `open source` *projects* *that* `inspire` *us*
+- **Our** *amazing* `community` *of* `contributors`
+- [**GitHub**](https://github.com) *for* `providing` *the* **API** *that* `powers` **OPENSOX**
+
+## 📞 **Contact**
+
+**For** *any* `questions` *or* `concerns`, *please* `open` *an* `issue` *or* `contact` *the* `maintainers`:
+
+- **Shubham** - [**@your_twitter**](https://x.com/i_m_shubham45)
+
+**Project** *Link*: [**https://github.com/shubGupta10/OpenSox**](https://github.com/shubGupta10/OpenSox)
