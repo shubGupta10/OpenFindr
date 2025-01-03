@@ -10,7 +10,6 @@ import { motion } from "framer-motion"
 import { useTheme } from 'next-themes'
 import { Input } from "@/components/ui/input"
 import debounce from 'lodash/debounce'
-import SavedRepositories from '@/app/components/SavedRepos'
 import { useSession } from 'next-auth/react'
 
 const BeginnerRepos = () => {
@@ -20,7 +19,6 @@ const BeginnerRepos = () => {
   const [page, setPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
   const { theme } = useTheme()
-  const { data: session } = useSession()
 
   const fetchIssues = async () => {
     try {
