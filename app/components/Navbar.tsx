@@ -24,17 +24,17 @@ export function Navbar() {
   }
 
   const NavItems = () => (
-    session ? (
-      <>
-        <Link 
-          href="/pages/beginner-repos" 
-          className="flex items-center space-x-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-          onClick={() => setIsOpen(false)}
-        >
-          <BookOpen className="w-4 h-4" />
-          <span>Beginner Repos</span>
-        </Link>
-        
+    <>
+      <Link 
+        href="/pages/beginner-repos" 
+        className="flex items-center space-x-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+        onClick={() => setIsOpen(false)}
+      >
+        <BookOpen className="w-4 h-4" />
+        <span>Beginner Repos</span>
+      </Link>
+      
+      {session && (
         <Link 
           href="/pages/fetch-saved-repos" 
           className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -42,16 +42,16 @@ export function Navbar() {
         >
           Saved Repos
         </Link>
-        
-        <Link 
-          href="/pages/repos" 
-          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-          onClick={() => setIsOpen(false)}
-        >
-          Top Repos
-        </Link>
-      </>
-    ) : null
+      )}
+      
+      <Link 
+        href="/pages/repos" 
+        className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+        onClick={() => setIsOpen(false)}
+      >
+        Top Repos
+      </Link>
+    </>
   )
 
   return (
@@ -66,7 +66,7 @@ export function Navbar() {
           </Link>
           
           <div className="hidden md:flex items-center space-x-6">
-            {session && <NavItems />}
+            <NavItems />
             
             <Button
               variant="outline"
@@ -122,7 +122,7 @@ export function Navbar() {
                   <SheetTitle>Navigation</SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col space-y-4">
-                  {session && <NavItems />}
+                  <NavItems />
                   {session ? (
                     <Button 
                       onClick={() => {

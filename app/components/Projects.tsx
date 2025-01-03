@@ -4,13 +4,14 @@ import React, { useEffect, useState } from "react"
 import { SelectLanguage, SelectKeywords, SelectPopularity } from "./SelectComponent"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { GithubIcon, Star, GitForkIcon, Loader2, Search, ExternalLink, Book } from 'lucide-react'
+import { GithubIcon, Star, GitForkIcon, Loader2, Search, ExternalLink, Book, Save } from 'lucide-react'
 import { motion } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Repository } from "@/types/Repository"
-import { useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import debounce from 'lodash/debounce'
-import SavedRepositories from "@/app/components/SavedRepos"
+import { SavedRepositories } from "@/app/components/SavedRepos"
+import { useRouter } from "next/navigation"
 
 export default function Projects() {
   const [repositories, setRepositories] = useState<Repository[]>([])
@@ -50,6 +51,7 @@ export default function Projects() {
   const handleLanguageChange = (value: string) => setSelectLanguage(value)
   const handleChangePopularity = (value: string) => setSelectedPopularity(value)
   const handleChangeKeywords = (value: string) => setSelectedKeywords(value)
+  const router = useRouter()
 
   if (loading) {
     return (
@@ -60,6 +62,13 @@ export default function Projects() {
         </div>
       </div>
     )
+  }
+
+  const handleSignIn = async () => {
+    const result = await signIn('github', { redirect: false })
+    if (result?.ok) {
+      router.push('/pages/repos')
+    }
   }
 
   return (
@@ -76,7 +85,7 @@ export default function Projects() {
                   Discover popular open-source projects filtered by your preferences
                 </p>
               </div>
-              
+
               <div className="relative flex items-center w-full lg:w-auto">
                 <Search className="absolute left-3 h-4 w-4 text-gray-500 dark:text-gray-400" />
                 <Input
@@ -109,7 +118,7 @@ export default function Projects() {
                   </p>
                 </CardContent>
               </Card>
-              
+
             ) : repositories.length > 0 ? (
               repositories.map((repo, index) => (
                 <motion.div
@@ -122,7 +131,7 @@ export default function Projects() {
                     <CardHeader className="flex-grow">
                       <CardTitle className="flex flex-col gap-2">
                         <div className="flex items-start justify-between">
-                          <a 
+                          <a
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -132,9 +141,19 @@ export default function Projects() {
                             <span className="break-all">{repo.name}</span>
                             <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                           </a>
-                          {session && session.user && (
-                            <SavedRepositories repo={repo} userEmail={session.user.email || ''} />
-                          )}
+                          <div>
+                            {session ? (
+                              <SavedRepositories repo={repo} handleSignIn={handleSignIn} />
+                            ) : (
+                              <Button
+                                onClick={handleSignIn}
+                                className="p-1 rounded-full transition-colors text-gray-500 bg-gray-100 hover:bg-[#121828] hover:text-white dark:hover:text-black dark:bg-[#121828] dark:hover:bg-gray-100 "
+                                title="Sign in to save repository"
+                              >
+                                <Save className="h-5 w-5" />
+                              </Button>
+                            )}
+                          </div>
                         </div>
                         <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                           {repo.description || "No description available."}
@@ -152,8 +171,8 @@ export default function Projects() {
                           <span>{repo.forks_count.toLocaleString()}</span>
                         </div>
                       </div>
-                      <Button 
-                        asChild 
+                      <Button
+                        asChild
                         className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white text-xs sm:text-sm"
                       >
                         <a

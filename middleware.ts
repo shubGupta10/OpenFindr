@@ -29,5 +29,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: [ '/pages/repos', '/pages/beginner-repos', '/pages/fetch-saved-repos'], 
+  matcher: [ '/pages/fetch-saved-repos'], 
 };
