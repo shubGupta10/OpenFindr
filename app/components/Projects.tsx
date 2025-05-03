@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import { SelectLanguage, SelectKeywords, SelectPopularity } from "./SelectComponent"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { GithubIcon, Star, GitForkIcon, Loader2, Search, ExternalLink, Book, Save } from 'lucide-react'
+import { GithubIcon, Star, GitForkIcon, Loader2, Search, ExternalLink, Book, Save, Code2 } from 'lucide-react'
 import { motion } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Repository } from "@/types/Repository"
@@ -53,12 +53,27 @@ export default function Projects() {
   const handleChangeKeywords = (value: string) => setSelectedKeywords(value)
   const router = useRouter()
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  }
+
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center bg-[#f8f8f8] dark:bg-[#121212]">
         <div className="text-center space-y-4">
-          <Loader2 className="w-12 h-12 animate-spin text-blue-600 dark:text-blue-400 mx-auto" />
-          <p className="text-gray-600 dark:text-gray-400">Please wait a sec...</p>
+          <Loader2 className="w-12 h-12 animate-spin text-amber-600 dark:text-amber-500 mx-auto" />
+          <p className="text-[#3a3a3a] dark:text-[#a0a0a0]">Please wait a sec...</p>
         </div>
       </div>
     )
@@ -72,42 +87,55 @@ export default function Projects() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-        <div className="space-y-4 sm:space-y-6">
-          <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 shadow-sm">
-            <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
+    <div className="min-h-screen bg-[#f8f8f8] dark:bg-[#121212] text-[#1a1a1a] dark:text-[#e5e5e5] transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-8"
+        >
+          <div className="bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-[#e5e5e5] dark:border-[#2a2a2a]">
+            <div className="flex flex-col space-y-6 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
               <div className="space-y-2">
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-black dark:to-white bg-clip-text text-transparent">
-                  Top GitHub Projects
-                </h1>
-                <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-3">
+                  <Code2 className="h-6 w-6 text-amber-600 dark:text-amber-500" />
+                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                    <span className="text-amber-600 dark:text-amber-500">Open</span>Source Projects
+                  </h1>
+                </div>
+                <p className="text-sm text-[#3a3a3a] dark:text-[#a0a0a0]">
                   Discover popular open-source projects filtered by your preferences
                 </p>
               </div>
 
               <div className="relative flex items-center w-full lg:w-auto">
-                <Search className="absolute left-3 h-4 w-4 text-gray-500 dark:text-gray-400" />
+                <Search className="absolute left-3 h-4 w-4 text-[#3a3a3a] dark:text-[#a0a0a0]" />
                 <Input
                   type="text"
                   placeholder="Search repositories..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 pr-4 py-2 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                  className="pl-9 pr-4 py-2 w-full bg-white dark:bg-[#161616] border border-[#e5e5e5] dark:border-[#2a2a2a] rounded-md focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-500 text-[#1a1a1a] dark:text-[#e5e5e5]"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
               <SelectLanguage onChange={handleLanguageChange} />
               <SelectPopularity onChange={handleChangePopularity} />
               <SelectKeywords onChange={handleChangeKeywords} />
             </div>
           </div>
 
-          <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {error ? (
-              <Card className="col-span-full border-red-200 dark:border-red-800">
+              <Card className="col-span-full border-red-200 dark:border-red-800 bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-red-600 dark:text-red-400">Error Occurred</CardTitle>
                 </CardHeader>
@@ -118,24 +146,22 @@ export default function Projects() {
                   </p>
                 </CardContent>
               </Card>
-
             ) : repositories.length > 0 ? (
               repositories.map((repo, index) => (
                 <motion.div
                   key={repo.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  variants={item}
+                  transition={{ duration: 0.3 }}
                 >
-                  <Card className="h-full flex flex-col overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
-                    <CardHeader className="flex-grow">
+                  <Card className="h-full flex flex-col overflow-hidden border border-[#e5e5e5] dark:border-[#2a2a2a] hover:border-amber-500/50 dark:hover:border-amber-500/30 shadow-sm hover:shadow-md transition-all duration-300 bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-sm">
+                    <CardHeader className="flex-grow pb-2">
                       <CardTitle className="flex flex-col gap-2">
                         <div className="flex items-start justify-between">
                           <a
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-base sm:text-lg font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center gap-2 group"
+                            className="text-base sm:text-lg font-semibold text-amber-600 dark:text-amber-500 hover:text-amber-700 dark:hover:text-amber-400 flex items-center gap-2 group"
                           >
                             <Book className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                             <span className="break-all">{repo.name}</span>
@@ -147,7 +173,7 @@ export default function Projects() {
                             ) : (
                               <Button
                                 onClick={handleSignIn}
-                                className="p-1 rounded-full transition-colors text-gray-500 bg-gray-100 hover:bg-[#121828] hover:text-white dark:hover:text-black dark:bg-[#121828] dark:hover:bg-gray-100 "
+                                className="p-1 rounded-full transition-colors text-[#3a3a3a] bg-[#f8f8f8] hover:bg-[#1a1a1a] hover:text-white dark:text-[#a0a0a0] dark:bg-[#1a1a1a] dark:hover:bg-amber-600 dark:hover:text-white"
                                 title="Sign in to save repository"
                               >
                                 <Save className="h-5 w-5" />
@@ -155,25 +181,25 @@ export default function Projects() {
                             )}
                           </div>
                         </div>
-                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                        <p className="text-xs sm:text-sm text-[#3a3a3a] dark:text-[#a0a0a0]">
                           {repo.description || "No description available."}
                         </p>
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-4">
+                    <CardContent className="space-y-4 pt-2">
                       <div className="flex items-center gap-4 text-xs sm:text-sm">
-                        <div className="flex items-center gap-1 text-yellow-500 dark:text-yellow-400">
+                        <div className="flex items-center gap-1 text-yellow-600 dark:text-yellow-500">
                           <Star className="w-3 h-3 sm:w-4 sm:h-4" />
                           <span>{repo.stargazers_count.toLocaleString()}</span>
                         </div>
-                        <div className="flex items-center gap-1 text-blue-500 dark:text-blue-400">
+                        <div className="flex items-center gap-1 text-amber-600 dark:text-amber-500">
                           <GitForkIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                           <span>{repo.forks_count.toLocaleString()}</span>
                         </div>
                       </div>
                       <Button
                         asChild
-                        className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white text-xs sm:text-sm"
+                        className="w-full bg-[#1a1a1a] hover:bg-[#2a2a2a] dark:bg-amber-600 dark:hover:bg-amber-700 text-white text-xs sm:text-sm"
                       >
                         <a
                           href={repo.html_url}
@@ -190,18 +216,17 @@ export default function Projects() {
                 </motion.div>
               ))
             ) : (
-              <Card className="col-span-full text-center py-8 sm:py-12 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
+              <Card className="col-span-full text-center py-12 bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-sm border border-[#e5e5e5] dark:border-[#2a2a2a]">
                 <CardContent>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                  <p className="text-[#3a3a3a] dark:text-[#a0a0a0]">
                     No repositories found. Try adjusting your filters or search query.
                   </p>
                 </CardContent>
               </Card>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   )
 }
-

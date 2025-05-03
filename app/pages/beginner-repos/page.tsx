@@ -43,35 +43,56 @@ const BeginnerRepos = () => {
     return () => debouncedFetch.cancel()
   }, [language, page, searchQuery])
 
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  }
+
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center bg-[#f8f8f8] dark:bg-[#121212]">
         <div className="text-center space-y-4">
-          <Loader2 className="w-12 h-12 animate-spin text-blue-600 dark:text-blue-400 mx-auto" />
-          <p className="text-gray-600 dark:text-gray-400">Please wait a sec...</p>
+          <Loader2 className="w-12 h-12 animate-spin text-amber-600 dark:text-amber-500 mx-auto" />
+          <p className="text-[#3a3a3a] dark:text-[#a0a0a0]">Finding the best issues for you...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="space-y-6">
-          <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 shadow-sm">
+    <div className=" min-h-screen bg-[#f8f8f8] dark:bg-[#121212] text-[#1a1a1a] dark:text-[#e5e5e5] transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-8"
+        >
+          <div className="bg-white dark:bg-[#161616] rounded-lg p-6 shadow-md border border-[#e5e5e5] dark:border-[#2a2a2a]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-black dark:to-white bg-clip-text text-transparent">
-                Beginner-Friendly Issues
+              <h1 className="text-3xl font-bold tracking-tight">
+                <span className="text-amber-600 dark:text-amber-500">Beginner-</span>Friendly Issues
               </h1>
               
               <div className="relative flex items-center max-w-md">
-                <Search className="absolute left-3 h-4 w-4 text-gray-500 dark:text-gray-400" />
+                <Search className="absolute left-3 h-4 w-4 text-[#3a3a3a] dark:text-[#a0a0a0]" />
                 <Input
                   type="text"
                   placeholder="Search issues..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 pr-4 py-2 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                  className="pl-9 pr-4 py-2 w-full bg-white dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#2a2a2a] rounded-md focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-600 focus:border-amber-500"
                 />
               </div>
             </div>
@@ -81,16 +102,20 @@ const BeginnerRepos = () => {
             </div>
           </div>
 
-          <div className="grid gap-6">
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid gap-6"
+          >
             {issues.length > 0 ? (
               issues.map((issue, index) => (
                 <motion.div
                   key={issue.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  variants={item}
+                  transition={{ duration: 0.3 }}
                 >
-                  <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
+                  <Card className="overflow-hidden border border-[#e5e5e5] dark:border-[#2a2a2a] hover:border-amber-500/50 dark:hover:border-amber-500/30 shadow-sm hover:shadow-md transition-all duration-300 bg-white dark:bg-[#1a1a1a]">
                     <CardHeader>
                       <CardTitle className="flex items-start justify-between gap-4">
                         <div className="space-y-1 flex-grow">
@@ -98,7 +123,7 @@ const BeginnerRepos = () => {
                             href={issue.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xl font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center gap-2 group"
+                            className="text-xl font-semibold text-amber-600 dark:text-amber-500 hover:text-amber-700 dark:hover:text-amber-400 flex items-center gap-2 group"
                           >
                             <GitPullRequest className="w-5 h-5" />
                             {issue.title}
@@ -108,22 +133,21 @@ const BeginnerRepos = () => {
                             href={issue.repository.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-1"
+                            className="text-sm text-[#3a3a3a] dark:text-[#a0a0a0] hover:text-[#1a1a1a] dark:hover:text-[#e5e5e5] flex items-center gap-1"
                           >
                             <Book className="w-4 h-4" />
                             {issue.repository.full_name}
                           </a>
                         </div>
-                        {/* {session && session.user && session.user.email && (
-                          <SavedRepositories repo={issue} userEmail={session.user.email} />
-                        )} */}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="flex flex-wrap gap-2">
                         {issue.labels.map((label) => {
+                          // Process colors for labels
                           const bgColor = `#${label.color}`
                           const textColor = parseInt(label.color, 16) > 0x7FFFFF ? '#000000' : '#FFFFFF'
+                          
                           return (
                             <Badge 
                               key={label.id}
@@ -138,7 +162,7 @@ const BeginnerRepos = () => {
                           )
                         })}
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center gap-2 text-sm text-[#3a3a3a] dark:text-[#a0a0a0]">
                         <Calendar className="w-4 h-4" />
                         <span>
                           Created {new Date(issue.created_at).toLocaleDateString(undefined, {
@@ -153,20 +177,26 @@ const BeginnerRepos = () => {
                 </motion.div>
               ))
             ) : (
-              <Card className="text-center py-12 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
-                <CardContent>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    No issues found. Try adjusting your search or selecting a different language.
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div variants={item}>
+                <Card className="text-center py-12 bg-white dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#2a2a2a]">
+                  <CardContent>
+                    <div className="flex flex-col items-center justify-center space-y-4">
+                      <Search className="w-10 h-10 text-amber-600 dark:text-amber-500 opacity-50" />
+                      <p className="text-[#3a3a3a] dark:text-[#a0a0a0]">
+                        No issues found. Try adjusting your search or selecting a different language.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             )}
-          </div>
-        </div>
+          </motion.div>
+          
+          {/* Pagination or load more could be added here */}
+        </motion.div>
       </div>
     </div>
   )
 }
 
 export default BeginnerRepos
-
