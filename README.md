@@ -99,4 +99,4 @@ To get started with OPENFINDR on your local machine:
 
 - **Shubham** - [**@twitter**](https://x.com/i_m_shubham45)
 
-**Project** *Link*: [**https://open-sox.vercel.app**](https://open-sox.vercel.app)
+**Project** *Link*: [**https://open-findr.vercel.app**](https://open-findr.vercel.app)
