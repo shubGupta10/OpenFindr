@@ -1,7 +1,7 @@
-# OPENSOX: Your Gateway to Open Source 🌐
+# OPENFINDR: Your Gateway to Open Source 🌐
 
 
-**OPENSOX** is an innovative platform designed to connect developers with open source projects that match their skills and interests. Whether you're a beginner looking to make your first contribution or an experienced developer seeking new challenges, OPENSOX provides the tools and resources to help you dive into the world of open source contributions.
+**OPENFINDR** is an innovative platform designed to connect developers with open source projects that match their skills and interests. Whether you're a beginner looking to make your first contribution or an experienced developer seeking new challenges, OPENFINDR provides the tools and resources to help you dive into the world of open source contributions.
 
 ## 🌟 Key Features
 
@@ -20,21 +20,21 @@ Before you begin, ensure you have Docker installed on your system. You can downl
 
 - [Download Docker](https://www.docker.com/products/docker-desktop)
 
-### How to Run OPENSOX Using Docker
+### How to Run OPENFINDR Using Docker
 
 1. **Pull the Docker image**:
 
-   Pull the latest OPENSOX Docker image from Docker Hub:
+   Pull the latest OPENFINDR Docker image from Docker Hub:
 
    ```bash
-   docker pull shubham76528/opensox:latest
+   docker pull shubham76528/OPENFINDR:latest
 
 2. **Run the Docker container**:
 
    After pulling the image, run the container with the following command:
 
    ```bash
-   docker run -p 3000:3000 shubham76528/opensox
+   docker run -p 3000:3000 shubham76528/OPENFINDR
 
 3. **Access the app:**
    
@@ -44,7 +44,7 @@ Before you begin, ensure you have Docker installed on your system. You can downl
    http://localhost:3000
 
 
-### How to clone OPENSOX Using Git links
+### How to clone OPENFINDR Using Git links
 
 Before you begin, ensure you have the following installed:
 
@@ -53,17 +53,17 @@ Before you begin, ensure you have the following installed:
 
 ### Installation
 
-To get started with OPENSOX on your local machine:
+To get started with OPENFINDR on your local machine:
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/shubGupta10/OpenSox
+   git clone https://github.com/shubGupta10/OpenFindr
 
 2. **Navigate into the project directory**:
 
    ```bash
-   cd opensox
+   cd openfindr
 
 3. **Install the dependencies**:
 
@@ -77,7 +77,7 @@ To get started with OPENSOX on your local machine:
 
 ## 🤝 **Contributing**
 
-**We** *welcome* `contributions` to **OPENSOX**! *Here's* **how** *you* **can** *help*:
+**We** *welcome* `contributions` to **OPENFINDR**! *Here's* **how** *you* **can** *help*:
 
 1. **Fork** *the* `repository`
 2. **Create** *your* `feature` **branch** (`git checkout -b feature/AmazingFeature`)
@@ -91,7 +91,7 @@ To get started with OPENSOX on your local machine:
 
 - **Thanks** *to* *all* *the* `open source` *projects* *that* `inspire` *us*
 - **Our** *amazing* `community` *of* `contributors`
-- [**GitHub**](https://github.com) *for* `providing` *the* **API** *that* `powers` **OPENSOX**
+- [**GitHub**](https://github.com) *for* `providing` *the* **API** *that* `powers` **OPENFINDR**
 
 ## 📞 **Contact**
 
