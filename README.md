@@ -1,125 +1,102 @@
-#  TechHunt
+# OPENFINDR: Your Gateway to Open Source 🌐
 
-**TechHunt** is a modern job board tailored for tech professionals in India. It curates high-quality tech roles across categories like Frontend, Backend, Full Stack, Data Science, and DevOps — focusing on junior to mid-level developers (0–5 years of experience). TechHunt emphasizes remote-first jobs and offers a clean, fast, and mobile-friendly interface.
 
----
+**OPENFINDR** is an innovative platform designed to connect developers with open source projects that match their skills and interests. Whether you're a beginner looking to make your first contribution or an experienced developer seeking new challenges, OPENFINDR provides the tools and resources to help you dive into the world of open source contributions.
 
-## 🌐 Live Demo
+## 🌟 Key Features
 
-🔗 [Visit TechHunt](https://tech-hunt-jobs.vercel.app)  
-
----
-
-## 📌 Features
-
-- 🎯 Entry-to-mid level job listings (0–5 years experience)
-- 🧑‍💻 Curated tech roles: Full Stack, Frontend, Backend, Data Science, DevOps
-- 🌍 Filter by remote, hybrid, or in-office
-- 🆕 Listings updated every 4 days
-- 🔎 Category-based filtering and search
-- ⚡ Fast, responsive, and mobile-friendly interface
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-- **Next.js** — App router
-- **Tailwind CSS** — Utility-first styling
-- **TypeScript** — Type safety and dev efficiency
-- **Shadcn/UI** — Accessible, reusable components
-
-### Backend
-
-- **Node.js + Express** — Lightweight REST API
-- **Redis** — Caching for performance & rate limiting
-
----
+- **Search by Programming Languages**: Easily find projects in popular languages like JavaScript, Python, Ruby, TypeScript, Go, and more.
+- **Filter by Popularity**: Discover projects based on their popularity and contribution activity, making it easier to find actively maintained repositories.
+- **Keyword Search**: Use keywords related to your interests or desired skills to find projects that align with your goals.
+- **Beginner-Friendly Issues**: Filter and discover beginner-friendly issues from top open source projects to help you make your first contribution with ease.
+- **Saved Repositories**: Keep track of your favorite repositories, issues, or projects you plan to contribute to by saving them in your profile.
+- **Dark Mode Support**: For late-night coding sessions, switch to dark mode to reduce eye strain and improve your experience.
 
 ## 🚀 Getting Started
 
-Follow these steps to run the project locally.
+### Prerequisites
 
-### 1. Clone the Repository
+Before you begin, ensure you have Docker installed on your system. You can download Docker from the following link:
 
-```bash
-git clone https://github.com/shubGupta10/OpenFindr
-cd techhunt
-```
+- [Download Docker](https://www.docker.com/products/docker-desktop)
 
-### 2. Install Dependencies
+### How to Run OPENFINDR Using Docker
 
-```bash
-# Install frontend dependencies
-cd client
-npm install
+1. **Pull the Docker image**:
 
-# Install backend dependencies
-cd ../server
-npm install
-```
+   Pull the latest OPENFINDR Docker image from Docker Hub:
 
-### 3. Environment Variables
+   ```bash
+   docker pull shubham76528/OPENFINDR:latest
 
-Create .env files in both the client/ and server/ directories.
+2. **Run the Docker container**:
 
-🟦 Client (client/.env)
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
-```
+   After pulling the image, run the container with the following command:
 
-### 4. Start the Development Servers
+   ```bash
+   docker run -p 3000:3000 shubham76528/OPENFINDR
 
-```bash
-# Start backend (in terminal 1)
-cd server
-npm run dev
+3. **Access the app:**
+   
+   Open your browser and navigate to:
 
-# Start frontend (in terminal 2)
-cd client
-npm run dev
-```
-
-Visit http://localhost:3000 in your browser.
-
----
-
-## 📁 Folder Structure
-
-```bash
-techhunt/
-├── client/               # Frontend - Next.js
-│   ├── app/              # App Router pages
-│   ├── components/       # Reusable components
-│   ├── styles/           # Tailwind setup
-│   └── ...
-├── server/               # Backend - Express
-│   ├── routes/           # API endpoints
-│   ├── controllers/      # Logic handlers
-│   ├── services/         # Job scraping, caching, etc.
-│   └── ...
-├── README.md
-└── ...
-```
-
----
+   ```bash
+   http://localhost:3000
 
 
-## 🤝 Contributing
+### How to clone OPENFINDR Using Git links
 
-We welcome contributions!
+Before you begin, ensure you have the following installed:
 
-1. Fork the repo
-2. Create your feature branch: `git checkout -b feature/feature-name`
-3. Commit your changes: `git commit -m "Add feature"`
-4. Push to the branch: `git push origin feature-name`
-5. Open a Pull Request
+- **Node.js** (v14 or later)
+- **npm** or **yarn**
 
----
+### Installation
+
+To get started with OPENFINDR on your local machine:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/shubGupta10/OpenFindr
+
+2. **Navigate into the project directory**:
+
+   ```bash
+   cd openfindr
+
+3. **Install the dependencies**:
+
+   ```bash
+   npm install
+
+4. **Start the development server**:
+
+   ```bash
+   npm run dev
+
+## 🤝 **Contributing**
+
+**We** *welcome* `contributions` to **OPENFINDR**! *Here's* **how** *you* **can** *help*:
+
+1. **Fork** *the* `repository`
+2. **Create** *your* `feature` **branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit** *your* `changes` (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** *to* *the* `branch` (`git push origin feature/AmazingFeature`)
+5. **Open** *a* `Pull Request`
 
 
-## 🙌 Acknowledgements
 
-- Built with ❤️ by Shubham Gupta
-- Inspired by platforms like RemoteOK, Wellfound, and Hired
+## 🙏 **Acknowledgments**
+
+- **Thanks** *to* *all* *the* `open source` *projects* *that* `inspire` *us*
+- **Our** *amazing* `community` *of* `contributors`
+- [**GitHub**](https://github.com) *for* `providing` *the* **API** *that* `powers` **OPENFINDR**
+
+## 📞 **Contact**
+
+**For** *any* `questions` *or* `concerns`, *please* `open` *an* `issue` *or* `contact` *the* `maintainers`:
+
+- **Shubham** - [**@twitter**](https://x.com/i_m_shubham45)
+
+**Project** *Link*: [**https://open-sox.vercel.app**](https://open-sox.vercel.app)
